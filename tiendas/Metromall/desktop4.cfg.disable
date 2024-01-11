@@ -1,0 +1,29 @@
+define host {
+        host_name               Desktop4_Metromall
+        alias                   Desktop4_Metromall
+        icon_image              monitor.png
+        address                 172.27.83.237
+        hostgroups              metromall
+        max_check_attempts      3
+        check_period            digicel
+        check_command           check-host-alive
+	notifications_enabled   0
+        contacts                helpdesk
+        notification_interval   60
+        notification_period     digicel
+}
+
+define service {
+        use                     generic-service,graphed-service
+        host_name               Desktop4_Metromall
+        service_description     PING
+        check_command           check_ping!100,20%!200,40%
+        max_check_attempts      3
+        check_interval          5
+        retry_interval          1
+        check_period            digicel
+	notifications_enabled   0
+        notification_interval   60
+        notification_period     digicel
+        contacts                helpdesk
+}
